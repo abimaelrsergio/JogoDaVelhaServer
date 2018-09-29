@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:simpleType name="IdType">
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="X|O"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="JogadorType">
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="[X|O| ]?"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="StatusJogoType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="jogue"/>
+			<xsd:enumeration value="aguarde"/>
+			<xsd:enumeration value="ganhou"/>
+			<xsd:enumeration value="perdeu"/>
+			<xsd:enumeration value="empate"/>
+			<xsd:enumeration value="wo"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:element name="JogoDaVelha">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="id" type="IdType"/>
+				<xsd:element name="status" type="StatusJogoType"/>
+				<xsd:element name="jogada">
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:pattern value="[0-8]?"/>
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element name="tabuleiro">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="p0" type="JogadorType"/>
+							<xsd:element name="p1" type="JogadorType"/>
+							<xsd:element name="p2" type="JogadorType"/>
+							<xsd:element name="p3" type="JogadorType"/>
+							<xsd:element name="p4" type="JogadorType"/>
+							<xsd:element name="p5" type="JogadorType"/>
+							<xsd:element name="p6" type="JogadorType"/>
+							<xsd:element name="p7" type="JogadorType"/>
+							<xsd:element name="p8" type="JogadorType"/>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>
